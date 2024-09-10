@@ -3,7 +3,6 @@ import styles from "./CurrentLocationWeather.module.css";
 
 function CurrentLocationWeather() {
   const [weatherNow, setWeatherNow] = useState<any>(null);
-  const [weatherCached, setWeatherCached] = useState<boolean>(false);
 
   useEffect(() => {
     let cachedWeather = localStorage.getItem("weatherData");
@@ -16,30 +15,18 @@ function CurrentLocationWeather() {
           console.log("Fetched weather data: ", response);
           setWeatherNow(response);
           localStorage.setItem("weatherData", JSON.stringify(response)); // Cache the data
-          if(cachedWeather){
-            setWeatherCached(true);
-          }
+
         })
         .catch((err) => console.error(err));
     } else {
         let parsedWeather = JSON.parse(cachedWeather);
         setWeatherNow(parsedWeather);
-        setWeatherCached(true);
     }
   }, []);
 
-  function clearWeatherCache() {
-    localStorage.removeItem("weatherData");
-    setWeatherCached(false); // Reset cache flag
-  }
 
   return (
     <div className={styles.currentWeatherContainer}>
-      {weatherCached ? (
-        <p className={styles.weatherCached}> Weather is cached <button onClick={clearWeatherCache}>Clear from cache</button> </p>
-      ) : (
-        <p>Weather not cached</p>
-      )}
   
       {weatherNow ? (
         <p> Current temperature in {weatherNow.location.name}: {weatherNow.current.temp_c}°C </p>
