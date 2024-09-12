@@ -3,10 +3,10 @@ $textcolor: darkblue;
 $fontsize: 18px;
 
 .App {
-  display: grid;
-  grid-template-columns: 1fr 33vw 1fr; /* 1fr for empty space, 33vw for content */
-  height: 100vh; /* Full viewport height */
-  background-color: hsl(240, 20%, 35%);
+  height: 100vh;
+  background-color: hsl(0, 0%, 100%);
+  width: 33vw;
+  margin-left: 33vw;
 }
 
 .App-header {
@@ -14,13 +14,13 @@ $fontsize: 18px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: hsl(240, 22%, 83%);
+  box-shadow: 0px 11px 13px -5px rgba(0, 0, 255, 0.75);
+  
 }
 
 @media (max-width: 844px) {
   .App-header {
     background-color: hsl(0, 0%, 100%);
-    box-shadow: 0 3px 9px 10px #0066ff;
     height: 10vh;
   }
   @media (max-height: 400px) {

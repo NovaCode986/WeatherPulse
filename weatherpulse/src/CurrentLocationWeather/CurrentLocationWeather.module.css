@@ -3,12 +3,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 40vh;
+}
+
+.weatherDiv{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.weatherDivOuter{
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages.pexels.com%2Fphotos%2F53545%2Fbackground-blue-clean-clear-53545.jpeg%3Fcs%3Dsrgb%26dl%3Dclean-field-grass-53545.jpg%26fm%3Djpg&f=1&nofb=1&ipt=f6fca1045335c69d308eeddf07d991e3e7f543bdb0fd01a8bbb6434a287d683f&ipo=images");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 70vh;
+}
+
+.weatherDivData{
+    text-align: end;
 }
 
 .currentWeatherContainer p{
-    margin-top: 50px;
     font-weight: bold;
 }
+
+.currentWeatherContainer ul{
+    padding: 0;
+    
+}
+
+.currentWeatherContainer li {
+    list-style-type: none;
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: x-large;
+}
+  
 
 .weatherCached{
     background-color: hsl(97, 100%, 41%);
