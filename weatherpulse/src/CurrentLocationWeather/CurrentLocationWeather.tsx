@@ -14,7 +14,6 @@ function CurrentLocationWeather() {
       )
         .then((response) => response.json())
         .then((response) => {
-          console.log("Fetched weather data: ", response);
           setWeatherNow(response);
           localStorage.setItem("weatherData", JSON.stringify(response)); // Cache the data
         })
@@ -30,6 +29,7 @@ function CurrentLocationWeather() {
       {weatherNow ? (
         <>
           <h2>{weatherNow.location.name}</h2>
+          <h3>Today {weatherNow.location.localtime}</h3>
           <div className={styles.weatherDivOuter}>
             <div className={styles.weatherDiv}>
               <ul>

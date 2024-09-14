@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.scss';
 import CurrentLocationWeather from './CurrentLocationWeather/CurrentLocationWeather';
+import CurrentLocationWeatherForcast from './CurrentLocationWeatherForcast/CurrentLocationWeatherForcast';
 
 function App() {
 
@@ -27,6 +28,10 @@ function App() {
         <h1>Weatherpulse</h1>
       </header>
       <CurrentLocationWeather/>
+      <CurrentLocationWeatherForcast/>
+      <footer>
+        <p>FOOTER</p>
+      </footer>
     </div>
   );
 }
