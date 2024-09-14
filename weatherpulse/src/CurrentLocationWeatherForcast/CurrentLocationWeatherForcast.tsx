@@ -12,7 +12,11 @@ function CurrentLocationWeatherForcast(){
     
     useEffect(()=>{
         let cachedWeatherForcast = localStorage.getItem("cachedWeatherForcastData");
-        const options = { method: "GET", headers: { accept: "application/json" } };
+        const options = { 
+            method: "GET", 
+            headers: { accept: "application/json" },
+            mode: 'no-cors' as RequestMode // Correct type assignment
+          };
 
         if(cachedWeatherForcast){
             let cachedWeatherForcastData = JSON.parse(cachedWeatherForcast)

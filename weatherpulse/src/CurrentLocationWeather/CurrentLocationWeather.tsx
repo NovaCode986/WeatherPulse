@@ -5,7 +5,11 @@ function CurrentLocationWeather() {
   const [weatherNow, setWeatherNow] = useState<any>(null);
   useEffect(() => {
     let cachedWeather = localStorage.getItem("weatherData");
-    const options = { method: "GET", headers: { accept: "application/json" } };
+    const options = { 
+      method: "GET", 
+      headers: { accept: "application/json" },
+      mode: 'no-cors' as RequestMode // Correct type assignment
+    };
 
     if (!cachedWeather) {
       fetch(
