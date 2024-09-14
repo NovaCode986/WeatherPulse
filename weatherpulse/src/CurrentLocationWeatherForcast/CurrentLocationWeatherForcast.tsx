@@ -38,7 +38,7 @@ function CurrentLocationWeatherForcast(){
 
         }else{
             console.log("Weather not cached")
-            fetch("http://api.weatherapi.com/v1/forecast.json?key=2332dfb52a52492ab80143318240709&q=Isle%20of%20Man", options)
+            fetch("https://api.weatherapi.com/v1/forecast.json?key=2332dfb52a52492ab80143318240709&q=Isle%20of%20Man", options)
             .then((response) => response.json())
             .then((response)=>{
                 localStorage.setItem("cachedWeatherForcastData", JSON.stringify(response));
