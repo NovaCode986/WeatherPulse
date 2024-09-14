@@ -9,7 +9,7 @@ function CurrentLocationWeather() {
 
     if (!cachedWeather) {
       fetch(
-        "http://api.weatherapi.com/v1/current.json?key=2332dfb52a52492ab80143318240709&q=Isle of Man&aqi=no",
+        "https://api.weatherapi.com/v1/current.json?key=2332dfb52a52492ab80143318240709&q=Isle of Man&aqi=no",
         options
       )
         .then((response) => response.json())
