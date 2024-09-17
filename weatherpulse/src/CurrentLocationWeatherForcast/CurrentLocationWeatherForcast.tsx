@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Styles  from "./CurrentLocationWeatherForcast.module.scss";
+const apiKey = process.env.WEATHERPULSE_API_KEY;
 
 function CurrentLocationWeatherForcast(){
     interface HoursObject {
@@ -42,7 +43,7 @@ function CurrentLocationWeatherForcast(){
 
         }else{
             console.log("Weather not cached")
-            fetch("https://api.weatherapi.com/v1/forecast.json?key=2332dfb52a52492ab80143318240709&q=Isle%20of%20Man", options)
+            fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Isle%20of%20Man`, options)
             .then((response) => response.json())
             .then((response)=>{
                 localStorage.setItem("cachedWeatherForcastData", JSON.stringify(response));
