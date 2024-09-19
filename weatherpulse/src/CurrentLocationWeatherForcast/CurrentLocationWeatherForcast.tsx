@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Styles  from "./CurrentLocationWeatherForcast.module.scss";
-const apiKey = process.env.WEATHERPULSE_API_KEY;
+const apiKey = process.env.REACT_APP_WEATHERPULSE_API_KEY;
 
 function CurrentLocationWeatherForcast(){
     interface HoursObject {

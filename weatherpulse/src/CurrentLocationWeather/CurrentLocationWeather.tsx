@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./CurrentLocationWeather.module.css";
-const apiKey = process.env.WEATHERPULSE_API_KEY;
+const apiKey = process.env.REACT_APP_WEATHERPULSE_API_KEY;
 
 function CurrentLocationWeather() {
   const [weatherNow, setWeatherNow] = useState<any>(null);
@@ -17,7 +17,10 @@ function CurrentLocationWeather() {
         `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Isle of Man&aqi=no`,
         options
       )
-        .then((response) => response.json())
+        .then(function(response) {
+          console.log("response: ",response)
+          response.json()
+        })
         .then((response) => {
           setWeatherNow(response);
           localStorage.setItem("weatherData", JSON.stringify(response)); // Cache the data
