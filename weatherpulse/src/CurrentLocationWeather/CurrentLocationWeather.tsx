@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from "react";
 import styles from "./CurrentLocationWeather.module.css";
-const apiKey = process.env.REACT_APP_WEATHERPULSE_API_KEY;
 
 function CurrentLocationWeather() {
+  const serverHost = window.location.hostname;
+  const apiUrl = `http://${serverHost}:5000/currentweather`;
+
   const [weatherNow, setWeatherNow] = useState<any>(null);
   useEffect(() => {
     let cachedWeather = localStorage.getItem("weatherData");
-    const options = { 
-      method: "GET", 
+    console.log(cachedWeather)
+    const options = {
+      method: "GET",
       headers: { accept: "application/json" },
-      mode: 'no-cors' as RequestMode // Correct type assignment
     };
-
-    if (!cachedWeather) {
-      fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Isle of Man&aqi=no`,
-        options
-      )
-        .then(function(response) {
-          console.log("response: ",response)
-          response.json()
-        })
+    if (!cachedWeather || typeof cachedWeather == undefined) {
+      fetch(apiUrl, options)
         .then((response) => {
-          setWeatherNow(response);
-          localStorage.setItem("weatherData", JSON.stringify(response)); // Cache the data
+          console.log("response: ", response);
+          return response.json(); // Return the JSON data here
+        })
+        .then((data) => {
+          console.log(data);
+          setWeatherNow(data);
+          localStorage.setItem("weatherData", JSON.stringify(data)); // Cache the data
         })
         .catch((err) => console.error(err));
+
     } else {
       let parsedWeather = JSON.parse(cachedWeather);
       setWeatherNow(parsedWeather);
