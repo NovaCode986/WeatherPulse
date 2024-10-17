@@ -4,9 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon index.js",
-    "client": "cd ../weatherpulse && npm start"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
