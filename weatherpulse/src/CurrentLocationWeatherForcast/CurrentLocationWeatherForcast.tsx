@@ -3,7 +3,7 @@ import Styles from "./CurrentLocationWeatherForcast.module.scss";
 
 function CurrentLocationWeatherForcast() {
   const serverHost = window.location.hostname;
-  const apiUrl = `http://weatherpulse.azurewebsites.net:8080/forecastweather`;
+  const apiUrl = `https://weatherpulse.azurewebsites.net/forecastweather`;
 
   interface HoursObject {
     time: String;

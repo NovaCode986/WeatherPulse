@@ -3,7 +3,7 @@ import styles from "./CurrentLocationWeather.module.css";
 
 function CurrentLocationWeather() {
   const serverHost = window.location.hostname;
-  const apiUrl = `http://weatherpulse.azurewebsites.net:8080/currentweather`;
+  const apiUrl = `https://weatherpulse.azurewebsites.net/currentweather`;
 
   const [weatherNow, setWeatherNow] = useState<any>(null);
   useEffect(() => {
