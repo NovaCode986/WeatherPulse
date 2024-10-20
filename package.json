@@ -5,7 +5,7 @@
   },
 "scripts": {
   "startroot": "concurrently \"npm run server\" \"npm run client\"",
-  "server": "cd node_server && npm install && nodemon index.js",
+  "server": "cd node_server && node index.js",
   "client": "cd weatherpulse && npm install && npm start"
 }
 
