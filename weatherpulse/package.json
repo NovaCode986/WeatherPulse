@@ -25,8 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-  "homepage": "https://NovaCode986.github.io/WeatherPulse"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +51,5 @@
     "gh-pages": "^6.1.1",
     "postcss-loader": "^8.1.1"
   },
-  "homepage": ""
+  "homepage": "https://novacode986.github.io/WeatherPulse/"
 }
