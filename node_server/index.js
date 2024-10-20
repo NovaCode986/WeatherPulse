@@ -70,7 +70,8 @@ app.get('/forecastweather', (req, res) => {
 
 // Catch-all route to serve index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../weatherpulse/build/index.html'));
+  res.send("Hello from the back end!")
+  //res.sendFile(path.join(__dirname, '../weatherpulse/build/index.html'));
 });
 
 app.listen(port, () => {
