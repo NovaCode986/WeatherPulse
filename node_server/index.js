@@ -14,7 +14,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const apiKey = process.env.WEATHERPULSE_API_KEY;
 
-app.use(express.static(path.join(__dirname, '../weatherpulse/build')));
+//app.use(express.static(path.join(__dirname, '../weatherpulse/build')));
 app.use(cors()); // Enable CORS for all routes
 
 app.get('/currentweather', (req, res) => {
