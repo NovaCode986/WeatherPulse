@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/WeatherPulse/static/css/main.bebe7a88.css",
-    "main.js": "/WeatherPulse/static/js/main.cf738ec6.js",
+    "main.js": "/WeatherPulse/static/js/main.050d6379.js",
     "static/js/453.cac9653a.chunk.js": "/WeatherPulse/static/js/453.cac9653a.chunk.js",
     "static/media/clean-field-grass-53545.jpg": "/WeatherPulse/static/media/clean-field-grass-53545.3bea0df32f8b97b972d9.jpg",
     "index.html": "/WeatherPulse/index.html",
     "main.bebe7a88.css.map": "/WeatherPulse/static/css/main.bebe7a88.css.map",
-    "main.cf738ec6.js.map": "/WeatherPulse/static/js/main.cf738ec6.js.map",
+    "main.050d6379.js.map": "/WeatherPulse/static/js/main.050d6379.js.map",
     "453.cac9653a.chunk.js.map": "/WeatherPulse/static/js/453.cac9653a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bebe7a88.css",
-    "static/js/main.cf738ec6.js"
+    "static/js/main.050d6379.js"
   ]
 }
