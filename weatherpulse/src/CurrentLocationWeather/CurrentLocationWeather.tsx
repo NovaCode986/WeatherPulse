@@ -6,38 +6,49 @@ function CurrentLocationWeather() {
   const apiUrl = `https://weatherpulse.azurewebsites.net/currentweather`;
 
   const [weatherNow, setWeatherNow] = useState<any>(null);
+
+  function formatDate(dateString: string){
+    const date = new Date(dateString)
+    const day = date.getDate();
+    const year = date.getFullYear();
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month  = monthNames[date.getMonth()]
+
+    let suffix = "th";
+  if (day % 10 === 1 && day !== 11) {
+    suffix = "st";
+  } else if (day % 10 === 2 && day !== 12) {
+    suffix = "nd";
+  } else if (day % 10 === 3 && day !== 13) {
+    suffix = "rd";
+  }
+
+  return `${day}${suffix} ${month} ${year}`
+  }
+
   useEffect(() => {
-    let cachedWeather = localStorage.getItem("weatherData");
-    console.log(cachedWeather)
     const options = {
       method: "GET",
       headers: { accept: "application/json" },
     };
-    if (!cachedWeather || typeof cachedWeather == undefined) {
-      fetch(apiUrl, options)
-        .then((response) => {
-          console.log("response: ", response);
-          return response.json(); // Return the JSON data here
-        })
-        .then((data) => {
-          console.log(data);
-          setWeatherNow(data);
-          localStorage.setItem("weatherData", JSON.stringify(data)); // Cache the data
-        })
-        .catch((err) => console.error(err));
-
-    } else {
-      let parsedWeather = JSON.parse(cachedWeather);
-      setWeatherNow(parsedWeather);
-    }
+    fetch(apiUrl, options)
+      .then((response) => {
+        console.log("response: ", response);
+        return response.json(); // Return the JSON data here
+      })
+      .then((data) => {
+        console.log(data);
+        data.location.localtime = formatDate(data.location.localtime)
+        setWeatherNow(data);
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   return (
     <div className={styles.currentWeatherContainer}>
       {weatherNow ? (
         <>
-          <h2>{weatherNow.location.name}</h2>
-          <h3>Today {weatherNow.location.localtime}</h3>
+          <h2>{weatherNow.location.name} {weatherNow.location.localtime}</h2>
           <div className={styles.weatherDivOuter}>
             <div className={styles.weatherDiv}>
               <ul>
@@ -45,6 +56,7 @@ function CurrentLocationWeather() {
                 <li> Temperature F</li>
                 <li> Sky</li>
                 <li> Humidity</li>
+                <li> Wind</li>
               </ul>
               <ul>
                 <li className={styles.weatherDivData}>
@@ -58,6 +70,9 @@ function CurrentLocationWeather() {
                 </li>
                 <li className={styles.weatherDivData}>
                   {weatherNow.current.humidity}%
+                </li>
+                <li className={styles.weatherDivData}>
+                  {weatherNow.current.wind_dir} - {weatherNow.current.wind_kph}kph
                 </li>
               </ul>
             </div>
