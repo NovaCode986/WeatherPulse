@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./CurrentLocationWeather.module.css";
+import partlyCloudyImage from "./partly_cloudy.webp"
+import patchyRainImage from "./patchy_rain.webp"
+// https://www.iconfinder.com/icons/2990924/drizzle_mixed_patchy_rain_shower_weather_icon
 
 function CurrentLocationWeather() {
-  const serverHost = window.location.hostname;
   const apiUrl = `https://weatherpulse.azurewebsites.net/currentweather`;
 
   const [weatherNow, setWeatherNow] = useState<any>(null);
@@ -26,6 +28,20 @@ function CurrentLocationWeather() {
   return `${day}${suffix} ${month} ${year}`
   }
 
+  function setwWaetherIcon(condition : string){
+    let icon = ""
+      switch(condition){
+        case "Partly cloudy":
+          icon = partlyCloudyImage
+          break;
+        case "Patchy rain nearby":
+          icon = patchyRainImage
+          break;
+
+      }
+      return icon
+  }
+
   useEffect(() => {
     const options = {
       method: "GET",
@@ -39,6 +55,7 @@ function CurrentLocationWeather() {
       .then((data) => {
         console.log(data);
         data.location.localtime = formatDate(data.location.localtime)
+        let weatherIcon = setwWaetherIcon(data.current.condition.text)
         setWeatherNow(data);
       })
       .catch((err) => console.error(err));
@@ -54,7 +71,7 @@ function CurrentLocationWeather() {
               <ul>
                 <li> Temperature C</li>
                 <li> Temperature F</li>
-                <li> Sky</li>
+                <li> Condition</li>
                 <li> Humidity</li>
                 <li> Wind</li>
               </ul>
@@ -66,7 +83,10 @@ function CurrentLocationWeather() {
                   {weatherNow.current.temp_f}f
                 </li>
                 <li className={styles.weatherDivData}>
-                  {weatherNow.current.condition.text}{" "}
+                  <div>
+                  <p>{weatherNow.current.condition.text}</p>
+                  <img src={partlyCloudyImage}></img>
+                  </div>
                 </li>
                 <li className={styles.weatherDivData}>
                   {weatherNow.current.humidity}%

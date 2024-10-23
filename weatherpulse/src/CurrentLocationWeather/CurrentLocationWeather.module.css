@@ -11,19 +11,25 @@
   
     ul {
       padding: 0;
+      li {
+        list-style-type: none;
+        margin: 10px 0;
+        font-weight: bold;
+        font-size: x-large;
+      }
+      div{
+        display: flex;
+      }
     }
   
-    li {
-      list-style-type: none;
-      margin: 10px 0;
-      font-weight: bold;
-      font-size: x-large;
+    
+    img{
+      width: 50px;
     }
   }
   
   .weatherDivOuter {
     background-size: 100% 100%;
-    width: 50%;
     display: flex;
     justify-content: center;
   }
