@@ -23,7 +23,6 @@
   
   .weatherDivOuter {
     background-size: 100% 100%;
-    width: 50%;
     display: flex;
     justify-content: center;
   }
