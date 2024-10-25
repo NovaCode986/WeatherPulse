@@ -16,6 +16,11 @@
         margin: 10px 0;
         font-weight: bold;
         font-size: x-large;
+        display: flex;
+        justify-content: space-between;
+        p{
+          margin: 0;
+        }
       }
       div{
         display: flex;
