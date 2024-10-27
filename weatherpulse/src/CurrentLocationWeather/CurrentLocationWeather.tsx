@@ -91,7 +91,6 @@ function CurrentLocationWeather() {
           <h2>
             {weatherNow.location.name} {weatherNow.location.localtime}
           </h2>
-          {/* <div className={styles.weatherDivOuter}> */}
             <div className={styles.weatherDiv}>
               <ul>
                 <li className={styles.weatherDivData}>
@@ -111,7 +110,6 @@ function CurrentLocationWeather() {
                 </li>
               </ul>
             </div>
-          {/* </div> */}
         </>
       ) : (
         <p>Loading weather...</p>
