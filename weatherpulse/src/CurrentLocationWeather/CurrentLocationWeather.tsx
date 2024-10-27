@@ -91,7 +91,7 @@ function CurrentLocationWeather() {
           <h2>
             {weatherNow.location.name} {weatherNow.location.localtime}
           </h2>
-          <div className={styles.weatherDivOuter}>
+          {/* <div className={styles.weatherDivOuter}> */}
             <div className={styles.weatherDiv}>
               <ul>
                 <li className={styles.weatherDivData}>
@@ -101,9 +101,7 @@ function CurrentLocationWeather() {
                 <p>Temperature F</p> <p>{weatherNow.current.temp_f}f</p>
                 </li>
                 <li className={styles.weatherDivData}>
-                  <div>
-                  <p>Condition </p> <p>{weatherNow.current.condition.text}<img src={weatherIcon}></img></p>
-                  </div>
+                <p style={{display: "flex", alignItems: "center"}}>Condition </p> <div><p style={{display: "flex", alignItems: "center"}}>{weatherNow.current.condition.text}<img src={weatherIcon}></img></p></div>  
                 </li>
                 <li className={styles.weatherDivData}>
                 <p>Humidity</p> <p>{weatherNow.current.humidity}%</p>
@@ -113,7 +111,7 @@ function CurrentLocationWeather() {
                 </li>
               </ul>
             </div>
-          </div>
+          {/* </div> */}
         </>
       ) : (
         <p>Loading weather...</p>

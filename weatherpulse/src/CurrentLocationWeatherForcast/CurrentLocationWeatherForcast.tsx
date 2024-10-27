@@ -13,7 +13,6 @@ function CurrentLocationWeatherForcast() {
   let [nextHours, setNextHours] = useState<any[]>([]);
 
   useEffect(() => {
-    let cachedWeatherForcast = localStorage.getItem("cachedWeatherForcastData");
     const options = {
       method: "GET",
       headers: { accept: "application/json" },
@@ -22,11 +21,7 @@ function CurrentLocationWeatherForcast() {
     function updateForcast(cachedWeatherForcastData: any) {
       let updatedHours: HoursObject[] = [];
 
-      for (
-        let i = 0;
-        i < cachedWeatherForcastData.forecast.forecastday[0].hour.length;
-        i++
-      ) {
+      for ( let i = 0; i < cachedWeatherForcastData.forecast.forecastday[0].hour.length; i++ ) {
         let hour = cachedWeatherForcastData.forecast.forecastday[0].hour[i];
         let hourSplit = hour.time.split(" ");
         if (parseInt(hourSplit[1].replace(":", "")) >= 1200) {
@@ -43,33 +38,20 @@ function CurrentLocationWeatherForcast() {
       }
       setNextHours(updatedHours);
     }
-
-    if (cachedWeatherForcast) {
-      // Use the initially cached data
-      let cachedWeatherForcastData = JSON.parse(cachedWeatherForcast);
-      updateForcast(cachedWeatherForcastData);
-    } else {
-      console.log("Weather not cached");
-      fetch(apiUrl, options)
-        .then((response) => response.json())
-        .then((response) => {
-          // Cache the new data
-          localStorage.setItem(
-            "cachedWeatherForcastData",
-            JSON.stringify(response)
-          );
-
-          // Fetch the newly cached data without calling localStorage.getItem again
-          updateForcast(response);
-        })
-        .catch((error) => {
-          console.error("Error fetching weather data:", error);
-        });
-    }
+    fetch(apiUrl, options)
+      .then((response) => response.json())
+      .then((response) => {
+        updateForcast(response);
+      })
+      .catch((error) => {
+        console.error("Error fetching weather data:", error);
+      });
   }, []);
 
   return (
     <div className={Styles.hourDiv}>
+    {nextHours[0] ? (
+      <>
       <h2>Hourly temperature</h2>
       <ul>
         {nextHours.map((hour, index) => (
@@ -84,6 +66,10 @@ function CurrentLocationWeatherForcast() {
           </li>
         ))}
       </ul>
+      </>
+    ):(
+      <h2>Loading forcast...</h2>
+    )}
     </div>
   );
 }
