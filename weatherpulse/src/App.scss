@@ -1,0 +1,50 @@
+$bgcolor: lightblue;
+$textcolor: darkblue;
+$fontsize: 18px;
+
+.App {
+  height: 100vh;
+  background-color: hsl(0, 0%, 100%);
+  width: 40vw;
+  margin-left: 30vw;
+}
+
+.App-header {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 11px 13px -5px rgba(0, 0, 255, 0.75);
+  
+}
+
+@media (max-width: 844px) {
+  .App-header {
+    background-color: hsl(0, 0%, 100%);
+    height: 10vh;
+  }
+  @media (max-height: 400px) {
+    .App-header {
+      height: 16vh;
+    }
+  }
+}
+
+
+
+.App-header h1 {
+  margin: 0;
+  font-size: 3rem;
+  margin-top: 2vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+footer{
+  p{
+    background-color: hsl(0, 0%, 100%);
+    margin: 0;
+    color: hsla(0, 0%, 100%);;
+  }
+  
+}

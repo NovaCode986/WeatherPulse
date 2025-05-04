@@ -1,0 +1,11 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  background-color: hsl(240, 20%, 30%);
+}
+
+@media (max-width: 850px) {
+  html, body {
+    background-color: hsl(0, 0%, 100%);
+  }
+}
