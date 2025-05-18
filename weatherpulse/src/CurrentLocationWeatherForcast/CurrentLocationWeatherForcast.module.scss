@@ -8,11 +8,9 @@
     }
     ul{
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: row;
         margin-bottom: 0;
-        padding-left: 5%;
-        width: 90%;
-        justify-content: center;
+        overflow: scroll;
     }
   
     li {
