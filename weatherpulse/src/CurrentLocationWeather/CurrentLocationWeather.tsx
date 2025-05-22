@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "./CurrentLocationWeather.module.css";
-import partlyCloudyImage from "./partly_cloudy.webp";
-import patchyRainImage from "./patchy_rain.webp";
-import light_drizzle from "./light_drizzle.png";
 // https://www.iconfinder.com/icons/2990924/drizzle_mixed_patchy_rain_shower_weather_icon
 
 function CurrentLocationWeather() {
   const apiUrl = `https://weatherpulse.azurewebsites.net/currentweather`;
 
   const [weatherNow, setWeatherNow] = useState<any>(null);
-  const [weatherIcon, setWeatherIcon] = useState("");
 
   function formatDate(dateString: string) {
     const date = new Date(dateString);
@@ -31,25 +27,6 @@ function CurrentLocationWeather() {
     return `${day}${suffix} ${month} ${year}`;
   }
   
-  function setwWeatherIconFunction(condition: string) {
-    let icon = "";
-    switch (condition) {
-      case "Partly cloudy":
-        icon = partlyCloudyImage;
-        break;
-      case "Patchy rain nearby":
-        icon = patchyRainImage;
-        break;
-      case "Light drizzle":
-        icon = light_drizzle;
-        console.log("light_drizzle: ",light_drizzle)
-        break;
-      default:
-        icon = "";
-    }
-    
-    return icon;
-  }
 
   useEffect(() => {
     const options = {
@@ -62,8 +39,6 @@ function CurrentLocationWeather() {
       })
       .then((data) => {
         data.location.localtime = formatDate(data.location.localtime);
-        let weatherIcon = setwWeatherIconFunction(data.current.condition.text);
-        setWeatherIcon(weatherIcon);
         setWeatherNow(data);
       })
       .catch((err) => console.error(err));
@@ -76,19 +51,16 @@ function CurrentLocationWeather() {
           <h2>
             {weatherNow.location.name} {weatherNow.location.localtime}
           </h2>
-          <div className={styles.weatherDivOuter}>
             <div className={styles.weatherDiv}>
               <ul>
                 <li className={styles.weatherDivData}>
-                <p>Temperature C</p> <p>{weatherNow.current.temp_c}c</p>
+                <p>Temperature C</p> <p>{weatherNow.current.temp_c}</p>
                 </li>
                 <li className={styles.weatherDivData}>
-                <p>Temperature F</p> <p>{weatherNow.current.temp_f}f</p>
+                <p>Temperature F</p> <p>{weatherNow.current.temp_f}</p>
                 </li>
                 <li className={styles.weatherDivData}>
-                  <div>
-                  <p>Condition </p> <p>{weatherNow.current.condition.text}<img src={weatherIcon}></img></p>
-                  </div>
+                  <p>Condition </p> <p>{weatherNow.current.condition.text}</p>
                 </li>
                 <li className={styles.weatherDivData}>
                 <p>Humidity</p> <p>{weatherNow.current.humidity}%</p>
@@ -98,7 +70,6 @@ function CurrentLocationWeather() {
                 </li>
               </ul>
             </div>
-          </div>
         </>
       ) : (
         <p>Loading weather...</p>

@@ -111,7 +111,7 @@ function CurrentLocationWeatherForcast() {
     };
 
     fetchAndFormatWeather();
-  }, [apiUrlDev]); // Added apiUrlDev to dependency array in case it changes
+  }, [apiUrl]); // Added apiUrlDev to dependency array in case it changes
 
   // --- Render Logic ---
   if (isLoading) {
@@ -138,7 +138,9 @@ function CurrentLocationWeatherForcast() {
       <div className={Styles.divDays}>
         {forecastData.map((dayForecast, dayIndex) => ( // Renamed 'day' to 'dayForecast' for clarity
           <div key={dayIndex} className={Styles.divDay}> {/* Use a div for the day container */}
-            <h3>{dayForecast.dayName}</h3> {/* Display the day name */}
+            {dayIndex == 0? 
+            <h3>{dayForecast.dayName} (Today)</h3>:
+            <h3>{dayForecast.dayName}</h3>}
             <ul>
               {dayForecast.dayHours.map((hour, hourIndex) => (
                 <li key={`${dayIndex}-${hourIndex}`}>

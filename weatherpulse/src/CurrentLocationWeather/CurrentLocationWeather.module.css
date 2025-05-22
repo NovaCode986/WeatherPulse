@@ -33,16 +33,9 @@
     }
   }
   
-  .weatherDivOuter {
-    background-size: 100% 100%;
-    display: flex;
-    justify-content: center;
-  }
   
   .weatherDiv {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+    width: 64vw;
   }
   
   .weatherDivData {
