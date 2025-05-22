@@ -1,18 +1,15 @@
 {
   "files": {
-    "main.css": "/WeatherPulse/static/css/main.cf544370.css",
-    "main.js": "/WeatherPulse/static/js/main.9a561c5a.js",
+    "main.css": "/WeatherPulse/static/css/main.fee4adca.css",
+    "main.js": "/WeatherPulse/static/js/main.24265f2b.js",
     "static/js/453.cac9653a.chunk.js": "/WeatherPulse/static/js/453.cac9653a.chunk.js",
-    "static/media/partly_cloudy.webp": "/WeatherPulse/static/media/partly_cloudy.29a19a6ee9f921e54e3c.webp",
-    "static/media/patchy_rain.webp": "/WeatherPulse/static/media/patchy_rain.86d9de499f6e5435e05a.webp",
-    "static/media/light_drizzle.png": "/WeatherPulse/static/media/light_drizzle.fb4b1a01e5590d4c5cbb.png",
     "index.html": "/WeatherPulse/index.html",
-    "main.cf544370.css.map": "/WeatherPulse/static/css/main.cf544370.css.map",
-    "main.9a561c5a.js.map": "/WeatherPulse/static/js/main.9a561c5a.js.map",
+    "main.fee4adca.css.map": "/WeatherPulse/static/css/main.fee4adca.css.map",
+    "main.24265f2b.js.map": "/WeatherPulse/static/js/main.24265f2b.js.map",
     "453.cac9653a.chunk.js.map": "/WeatherPulse/static/js/453.cac9653a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cf544370.css",
-    "static/js/main.9a561c5a.js"
+    "static/css/main.fee4adca.css",
+    "static/js/main.24265f2b.js"
   ]
 }
