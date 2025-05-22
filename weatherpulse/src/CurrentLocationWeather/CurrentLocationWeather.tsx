@@ -15,20 +15,8 @@ function CurrentLocationWeather() {
     const date = new Date(dateString);
     const day = date.getDate();
     const year = date.getFullYear();
-    const monthNames = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ];
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
     const month = monthNames[date.getMonth()];
 
     let suffix = "th";
@@ -44,7 +32,6 @@ function CurrentLocationWeather() {
   }
   
   function setwWeatherIconFunction(condition: string) {
-    console.log(condition);
     let icon = "";
     switch (condition) {
       case "Partly cloudy":
@@ -71,11 +58,9 @@ function CurrentLocationWeather() {
     };
     fetch(apiUrl, options)
       .then((response) => {
-        console.log("response: ", response);
         return response.json(); // Return the JSON data here
       })
       .then((data) => {
-        console.log(data);
         data.location.localtime = formatDate(data.location.localtime);
         let weatherIcon = setwWeatherIconFunction(data.current.condition.text);
         setWeatherIcon(weatherIcon);

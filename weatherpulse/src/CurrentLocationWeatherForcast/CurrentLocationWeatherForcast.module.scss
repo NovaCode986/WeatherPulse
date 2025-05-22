@@ -1,6 +1,6 @@
 
 
-.hourDiv {
+.forcastDiv {
     font-family: Arial, Helvetica, sans-serif;
     background-color: hsl(0, 0%, 100%);
     h2{
@@ -31,17 +31,22 @@
             text-align: center;
         }
     }
-  
-    div {
-      display: flex;
-      justify-content: space-between;
+
+
+    .divDay{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    h3{
+        text-align: center;
+    }
     }
   }
 
 
   
   @media (max-width: 400px) {
-    .hourDiv{
+    .forcastDiv{
         padding: 0 2vw 0 2vw;
         ul{
             padding: 0;
