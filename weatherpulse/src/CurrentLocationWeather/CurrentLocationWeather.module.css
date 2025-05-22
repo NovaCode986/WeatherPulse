@@ -33,22 +33,9 @@
     }
   }
   
-<<<<<<< HEAD
   
   .weatherDiv {
     width: 64vw;
-=======
-  .weatherDivOuter {
-    background-size: 100% 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .weatherDiv {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
->>>>>>> 8cbd697f2133b9c8bd6fbc78fe0bc86a3495f0d5
   }
   
   .weatherDivData {
@@ -61,11 +48,3 @@
     border-radius: 10px;
   }
   
-<<<<<<< HEAD
-=======
-@media(max-width: 844px){
-  .currentWeatherContainer{
-    height: 50vh;
-  }
-}
->>>>>>> 8cbd697f2133b9c8bd6fbc78fe0bc86a3495f0d5

@@ -3,7 +3,6 @@
     "gh-pages": "^6.2.0",
     "concurrently": "^9.0.1"
   },
-<<<<<<< HEAD
   "scripts": {
     "startroot": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd node_server && node index.js",
@@ -13,12 +12,3 @@
     "clientUpdate": "cd weatherpulse && npm install"
   }
 }
-=======
-"scripts": {
-  "startroot": "concurrently \"npm run server\" \"npm run client\"",
-  "server": "cd node_server && node index.js",
-  "client": "cd weatherpulse && npm install && npm start"
-}
-
-}
->>>>>>> 8cbd697f2133b9c8bd6fbc78fe0bc86a3495f0d5
