@@ -49,11 +49,7 @@ app.get('/forecastweather', (req, res) => {
   };
 
   fetch(
-<<<<<<< HEAD
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Isle%20of%20Man&days=3&aqi=no&alerts=no`,
-=======
-    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=Isle%20of%20Man`,
->>>>>>> 8cbd697f2133b9c8bd6fbc78fe0bc86a3495f0d5
     options
   )
     .then((response) => {
