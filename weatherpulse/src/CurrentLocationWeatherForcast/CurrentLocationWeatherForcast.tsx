@@ -128,7 +128,7 @@ function CurrentLocationWeatherForcast() {
 
   if (forecastData.length === 0) {
     return (
-      <div className={Styles.forcastDiv}>No hourly weather data available.</div>
+      <div className={Styles.forcastDiv}>No hourly weather data available</div>
     );
   }
 
