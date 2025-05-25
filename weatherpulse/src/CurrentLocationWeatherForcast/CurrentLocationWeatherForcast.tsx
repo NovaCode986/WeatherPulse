@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Styles from "./CurrentLocationWeatherForcast.module.scss";
 
 function CurrentLocationWeatherForcast() {
-  const apiUrl = `https://weatherpulse.azurewebsites.net/forecastweather`;
+  const apiUrl = `https://weatherpulse-bcgubdb6gudtg9bt.ukwest-01.azurewebsites.net/forecastweather`;
   const apiUrlDev = "http://localhost:5000/forecastweather";
 
   interface HoursObject {

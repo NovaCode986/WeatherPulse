@@ -3,7 +3,7 @@ import styles from "./CurrentLocationWeather.module.css";
 // https://www.iconfinder.com/icons/2990924/drizzle_mixed_patchy_rain_shower_weather_icon
 
 function CurrentLocationWeather() {
-  const apiUrl = `https://weatherpulse.azurewebsites.net/currentweather`;
+  const apiUrl = `https://weatherpulse-bcgubdb6gudtg9bt.ukwest-01.azurewebsites.net/currentweather`;
 
   const [weatherNow, setWeatherNow] = useState<any>(null);
 
