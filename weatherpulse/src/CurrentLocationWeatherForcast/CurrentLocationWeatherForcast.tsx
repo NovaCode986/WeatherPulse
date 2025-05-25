@@ -43,7 +43,7 @@ function CurrentLocationWeatherForcast() {
           console.log("Using cached data.");
         } else {
           console.log("Fetching new weather data...");
-          const response = await fetch(apiUrlDev, {
+          const response = await fetch(apiUrl, {
             method: "GET",
             headers: { accept: "application/json" },
           });
