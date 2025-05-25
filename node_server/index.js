@@ -14,12 +14,6 @@ const app = express();
 const port = process.env.PORT || 5000;
 const apiKey = process.env.WEATHERPULSE_API_KEY;
 
-const corsOptions = {
-  origin: '*', // or '*' during development
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-};
-
 app.use(cors(corsOptions));
 
 
