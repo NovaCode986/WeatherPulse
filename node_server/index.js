@@ -14,7 +14,27 @@ const app = express();
 const port = process.env.PORT || 5000;
 const apiKey = process.env.WEATHERPULSE_API_KEY;
 
+import cors from 'cors';
+
+const allowedOrigins = [
+  'https://novacode986.github.io',
+  // add more origins here if needed
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // allow requests with no origin (e.g. mobile apps, curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    callback(new Error('Not allowed by CORS'));
+  },
+  optionsSuccessStatus: 200, // some legacy browsers choke on 204
+};
+
 app.use(cors(corsOptions));
+
 
 
 app.get('/currentweather', (req, res) => {
