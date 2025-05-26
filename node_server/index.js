@@ -3,37 +3,24 @@ dotenv.config();
 
 import express from 'express';
 import fetch from 'node-fetch';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
 import cors from 'cors';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 5000;
 const apiKey = process.env.WEATHERPULSE_API_KEY;
 
-import cors from 'cors';
-
-const allowedOrigins = [
-  'https://novacode986.github.io',
-  // add more origins here if needed
-];
-
+const allowedOrigins = ['https://novacode986.github.io'];
 const corsOptions = {
-  origin: (origin, callback) => {
-    // allow requests with no origin (e.g. mobile apps, curl)
+  origin(origin, callback) {
+    // allow curl, server-to-server (no origin header)
     if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
+    if (allowedOrigins.includes(origin)) return callback(null, true);
     callback(new Error('Not allowed by CORS'));
   },
-  optionsSuccessStatus: 200, // some legacy browsers choke on 204
+  optionsSuccessStatus: 200,
 };
-
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 
 
