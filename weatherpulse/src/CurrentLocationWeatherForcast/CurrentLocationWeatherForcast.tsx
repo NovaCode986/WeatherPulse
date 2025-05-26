@@ -4,18 +4,21 @@ import Styles from "./CurrentLocationWeatherForcast.module.scss";
 function CurrentLocationWeatherForcast() {
   // Detect dev vs. prod by hostname
   const isLocalhost =
-    window.location.hostname === 'localhost' ||
-    window.location.hostname === '127.0.0.1';
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
 
   // Choose the correct base URL
   const baseUrl = isLocalhost
-    ? 'http://localhost:5000/forecastweather'
-    : 'https://weatherpulse-bcgubdb6gudtg9bt.ukwest-01.azurewebsites.net/forecastweather';
+    ? "http://localhost:5000/forecastweather"
+    : "https://weatherpulse-bcgubdb6gudtg9bt.ukwest-01.azurewebsites.net/forecastweather";
 
   interface HoursObject {
     time: string;
     temp_c: number;
     temp_f: number;
+    wind_mph: number;
+    wind_kph: number;
+    wind_dir: string;
   }
 
   interface DayForecast {
@@ -38,7 +41,6 @@ function CurrentLocationWeatherForcast() {
 
   useEffect(() => {
     const fetchAndFormatWeather = async () => {
-
       setIsLoading(true);
       setError(null);
 
@@ -93,15 +95,20 @@ function CurrentLocationWeatherForcast() {
               time: finalHourString,
               temp_c: hour.temp_c,
               temp_f: hour.temp_f,
+              wind_mph: hour.wind_mph,
+              wind_kph: hour.wind_kph,
+              wind_dir: hour.wind_dir,
             };
 
             // Logic to only show current and future hours for the first day
             // Otherwise, show all hours for subsequent days
-            if (processedForecast.length === 0) { // This is the first day
+            if (processedForecast.length === 0) {
+              // This is the first day
               if (hourInt >= currentHour) {
                 currentDayForecast.dayHours.push(hoursObject);
               }
-            } else { // Subsequent days, show all hours
+            } else {
+              // Subsequent days, show all hours
               currentDayForecast.dayHours.push(hoursObject);
             }
           });
@@ -142,28 +149,54 @@ function CurrentLocationWeatherForcast() {
 
   return (
     <div className={Styles.forcastDiv}>
-      <h2>Hourly temperature</h2>
+      <h2>Hourly forcast</h2>
       <div className={Styles.divDays}>
-        {forecastData.map((dayForecast, dayIndex) => ( // Renamed 'day' to 'dayForecast' for clarity
-          <div key={dayIndex} className={Styles.divDay}> {/* Use a div for the day container */}
-            {dayIndex == 0? 
-            <h3>{dayForecast.dayName} (Today)</h3>:
-            <h3>{dayForecast.dayName}</h3>}
-            <ul>
-              {dayForecast.dayHours.map((hour, hourIndex) => (
-                <li key={`${dayIndex}-${hourIndex}`}>
-                  <div>
-                    <p>{hour.time}</p>
-                  </div>
-                  <div className={Styles.tempDiv}>
-                    <p>C {hour.temp_c}</p>
-                    <p>F {hour.temp_f}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {forecastData.map(
+          (
+            dayForecast,
+            dayIndex // Renamed 'day' to 'dayForecast' for clarity
+          ) => (
+            <div key={dayIndex} className={Styles.divDay}>
+              {" "}
+              {/* Use a div for the day container */}
+              {dayIndex == 0 ? (
+                <h3>{dayForecast.dayName} (Today)</h3>
+              ) : (
+                <h3>{dayForecast.dayName}</h3>
+              )}
+              <ul>
+                {dayForecast.dayHours.map((hour, hourIndex) => (
+                  <li key={`${dayIndex}-${hourIndex}`}>
+                    <div className={Styles.timeDiv}>
+                      <p>{hour.time}</p>
+                    </div>
+                    <div>
+                      <div className={Styles.tempDiv}>
+                        <div>
+                          <p>Temperature</p>
+                        </div>
+                        <div className={Styles.dataDiv}>
+                          <p>C {hour.temp_c}</p>
+                          <p>F {hour.temp_f}</p>
+                        </div>
+                      </div>
+                      <div className={Styles.tempDiv}>
+                        <div>
+                          <p>Wind Speed/Direction</p>
+                        </div>
+                        <div className={Styles.dataDiv}>
+                          <p>MPH {hour.wind_mph}</p>
+                          <p>KPH {hour.wind_kph}</p>
+                        </div>
+                        <p style={{marginTop: "10px"}}>Direction {hour.wind_dir}</p>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        )}
       </div>
     </div>
   );
