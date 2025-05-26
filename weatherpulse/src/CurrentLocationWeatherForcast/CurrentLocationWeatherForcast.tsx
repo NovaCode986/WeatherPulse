@@ -2,8 +2,15 @@ import { useState, useEffect } from "react";
 import Styles from "./CurrentLocationWeatherForcast.module.scss";
 
 function CurrentLocationWeatherForcast() {
-  const apiUrl = `https://weatherpulse-bcgubdb6gudtg9bt.ukwest-01.azurewebsites.net/forecastweather`;
-  const apiUrlDev = "http://localhost:5000/forecastweather";
+  // Detect dev vs. prod by hostname
+  const isLocalhost =
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1';
+
+  // Choose the correct base URL
+  const baseUrl = isLocalhost
+    ? 'http://localhost:5000/forecastweather'
+    : 'https://weatherpulse-bcgubdb6gudtg9bt.ukwest-01.azurewebsites.net/forecastweather';
 
   interface HoursObject {
     time: string;
@@ -31,6 +38,7 @@ function CurrentLocationWeatherForcast() {
 
   useEffect(() => {
     const fetchAndFormatWeather = async () => {
+
       setIsLoading(true);
       setError(null);
 
@@ -43,7 +51,7 @@ function CurrentLocationWeatherForcast() {
           console.log("Using cached data.");
         } else {
           console.log("Fetching new weather data...");
-          const response = await fetch(apiUrl, {
+          const response = await fetch(baseUrl, {
             method: "GET",
             headers: { accept: "application/json" },
           });
@@ -111,7 +119,7 @@ function CurrentLocationWeatherForcast() {
     };
 
     fetchAndFormatWeather();
-  }, [apiUrl]); // Added apiUrlDev to dependency array in case it changes
+  }, [baseUrl]); // Added apiUrlDev to dependency array in case it changes
 
   // --- Render Logic ---
   if (isLoading) {

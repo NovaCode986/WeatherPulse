@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const apiKey = process.env.WEATHERPULSE_API_KEY;
 
-const allowedOrigins = ['https://novacode986.github.io'];
+const allowedOrigins = ['https://novacode986.github.io', 'http://localhost:3000'];
 const corsOptions = {
   origin(origin, callback) {
     // allow curl, server-to-server (no origin header)
@@ -29,7 +29,7 @@ app.get('/currentweather', (req, res) => {
     method: "GET",
     headers: { accept: "application/json" },
   };
-
+console.log("apiKey: ",apiKey)
   fetch(
     `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=Isle of Man&aqi=no`,
     options

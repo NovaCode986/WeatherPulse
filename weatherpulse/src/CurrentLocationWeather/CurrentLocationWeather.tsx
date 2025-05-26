@@ -3,7 +3,15 @@ import styles from "./CurrentLocationWeather.module.css";
 // https://www.iconfinder.com/icons/2990924/drizzle_mixed_patchy_rain_shower_weather_icon
 
 function CurrentLocationWeather() {
-  const apiUrl = `https://weatherpulse-bcgubdb6gudtg9bt.ukwest-01.azurewebsites.net/currentweather`;
+  // Detect dev vs. prod by hostname
+  const isLocalhost =
+    window.location.hostname === 'localhost' ||
+    window.location.hostname === '127.0.0.1';
+
+  // Choose the correct base URL
+  const baseUrl = isLocalhost
+    ? 'http://localhost:5000/forecastweather'
+    : 'https://weatherpulse-bcgubdb6gudtg9bt.ukwest-01.azurewebsites.net/forecastweather';
 
   const [weatherNow, setWeatherNow] = useState<any>(null);
 
@@ -33,7 +41,7 @@ function CurrentLocationWeather() {
       method: "GET",
       headers: { accept: "application/json" },
     };
-    fetch(apiUrl, options)
+    fetch(baseUrl, options)
       .then((response) => {
         return response.json(); // Return the JSON data here
       })
